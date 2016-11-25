@@ -478,6 +478,22 @@ It has a few subkeys which are:
 
 The minimum interval between cron runs is 5 minutes, even if specified as less.
 
+### URL rewrite
+
+Platform.sh supports using URL rewrite in your application. To do so, you have to add a `rules` block to a location.
+Here is an example to rewrite `/blog/20140513` to `/blog.php?bid=20140513`.
+
+```
+web:
+  locations:
+    "/":
+      root: "public"
+      passthru: "/index.php"
+        rules:
+          ^/blog/(?<bid>.*)$:
+            passthru: /blog.php?bid=$bid
+```
+
 ### Runtime
 
 The `.platform.app.yaml` file also supports a `runtime` key, which allows selected customizations to the language runtime. As those possibilities vary by language, please see the appropriate language documentation.
