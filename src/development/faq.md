@@ -14,6 +14,14 @@ If you want to delete your project and cancel your subscription, simply go to yo
 
 This will delete your project and stop invoicing for this project. If you have multiple projects, your subscription will continue until you don't have any projects left.
 
+## Can I skip a build in Git push?
+
+Yes, use the followings and your Git push will skip the build and deploy process.
+
+```
+GIT_SSH_COMMAND='ssh -o "SendEnv PLATFORMSH_PUSH_NO_WAIT"' PLATFORMSH_PUSH_NO_WAIT=1 git push
+```
+
 ## How can I export my data?
 
 If you have file mounts, you can keep a copy of the files using `rsync` like below.
